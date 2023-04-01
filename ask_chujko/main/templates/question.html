@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block question %}
+<h2 class="mt-5"> Ответ на вопрос №</h2>
+                    <div class="card mt-3 mb-3">
+                        <div class="row">
+                            <div class="col-3 align-items-center"
+                                style="border-right:
+                                1px solid gainsboro;">
+                                <div class="d-flex align-items-center
+                                    justify-content-center py-2">
+                                    <img src="{%static 'img/House.png'%}" class="rounded-circle" >
+                                </div>
+
+
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body">
+                                    <a ><h5 class="card-title">Заголовок {{ question.title }}</h5></a>
+                                    <p class="card-text">Тело вопроса {{ question.text }}</p>
+                                    <div class="row">
+
+                                        <div class="col">
+                                            <p class="card-text">Тэги <a href="#"
+                                                    class="">...</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+         </div>
+{% endblock %}
+
+{% block typetitle%}
+<div class="row">
+    <h3>Ответы</h3>
+</div>
+{% endblock %}
+
+{% block answer %}
+
+{% endblock %}
+
+{% block objectproperties %}
+<div class="col-11 pl-0 pr-0"></div>
+<div class="col-1 pl-0 pr-0">
+    <button type="button" class="btn btn-success btn-md" style="background-color: rgb(154, 207, 182)">
+        <span class="glyphicon glyphicon-ok"></span>
+    </button>
+</div>
+{% endblock %}

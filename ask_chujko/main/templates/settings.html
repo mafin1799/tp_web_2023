@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="col-md-8 order-md-1 mt-5">
+	<h1 class="mb-3">Настройки профиля</h1>
+	<div class="card p-3 mb-3">
+		<form class="needs-validation" novalidate="">
+			<div class="mb-3">
+				<label for="address">Имя пользователя</label>
+				<input type="text" class="form-control" id="address" placeholder="Взрывная стрекоза" required="" />
+			</div>
+			<div class="mb-3">
+				<label for="email">Email </label>
+				<input type="email" class="form-control" id="email" placeholder="you@example.com" />
+			</div>
+			<div class="mb-3">
+				<label for="username">Логин</label>
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">@</span>
+					</div>
+					<input type="text" class="form-control" id="username" placeholder="Логин" required="" />
+				</div>
+			</div>
+			<div class="mb-3">
+				<input type="file" class="form-control mt-3 mb-3" id="file" />
+				<img src="{%static 'img/House.png'%}" class="border rounded-circle" style="width:150px; height: 150px" />
+			</div>
+		</form>
+	</div>
+</div>
+<button type="submit" class="btn btn-primary">
+	Сохранить
+</button>
+{% endblock %}

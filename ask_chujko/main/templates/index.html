@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+{% block question %}{% endblock %}
+
+    {% block objectlist %}
+    <div class="container mt-5" >
+        {% block typetitle %}
+        <div class="row mb-3">
+            <div class="col-md-auto"><a href="{% url 'index' %}" class="fs-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Новые вопросы"><i class="bi bi-emoji-sunglasses-fill fs-2"></i>Новые</a></div>
+            <div class="col-md-auto"><a href="{% url 'hot' %}" class="fs-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Горячие обсуждения">
+                <i class="bi bi-fire "></i>Горячие</a>
+            </div>
+        </div>
+        {% endblock %}
+        {% for object in objects %}
+         <div class="card mt-3 mb-3">
+                        <div class="row">
+                            <div class="col-3 align-items-center"
+                                style="border-right:
+                                1px solid gainsboro;">
+                                <div class="h-75 d-flex align-items-center
+                                    justify-content-center">
+                                    <img src="{%static 'img/House.png'%}" class="rounded-circle" >
+                                </div>
+                                {% include "like.html" with rating=object.rating %}
+
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body">
+                                    <a href="{% url 'main' object.id %}"><h5 class="card-title">{{ object.title }}</h5></a>
+                                    <p class="card-text">{{ object.text }}</p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a class="btn btn-link" href="{% url 'main' object.id %}">Ответы ({{ i }})</a>
+                                        </div>
+                                        <div class="col">
+                                            <p class="card-text">Тэги <a href="#"
+                                                    class="">...</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+         </div>
+        {% endfor %}
+        {% include "paginator.html" with objects=objects %}
+        <div class="row" style="height: 5vh"></div>
+    </div>
+    {% endblock %}
+    {% block answer%}{% endblock %}
+    <div class="row" style="height: 5vh"></div>
+{% endblock %}

@@ -1,0 +1,35 @@
+html, body {
+    height: 100vh;
+    font-size: 16px;
+}
+header, nav, section, article, aside, footer {
+	display: block;
+}
+
+:root{
+    --height-header:8vh;
+    --height-footer:3vh;
+}
+.wrapper {
+    height: inherit;
+    position: relative;
+}
+  
+header {
+    height:var(--height1);
+}
+  
+main {
+    position: relative;
+    height:calc(100vh - (var(--height-header) + var(--height-footer)) );
+    margin-top: var(--height-header);
+}
+
+footer {
+    height: var(--height-footer);
+    position: fixed;
+    bottom: 0;
+    text-align: right;
+
+}
+

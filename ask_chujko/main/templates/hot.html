@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+
+{% load static %}
+{% block typetitle %}
+ <div class="row">
+     <div class="col-md-auto"><a href="{% url 'hot' %}" class="fs-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Горячие обсуждения"><i class="bi bi-fire "></i>Горячие</a></div>
+     <div class="col-md-auto"><a href="{% url 'index' %}" class="fs-2" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Новые вопросы"><i class="bi bi-emoji-sunglasses-fill "></i>Новые</a></div>
+ </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<h1 class="mb-3 mt-5">Задать вопрос</h1>
+<form class="card mt-3 p-3">
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="theme">Тема</span>
+		<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="theme" />
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlTextarea1" class="form-label">Подробное описание</label>
+		<textarea rows="18" class="form-control" id="exampleFormControlTextarea1"></textarea>
+	</div>
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="tags">Тэги</span>
+		<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="tags" />
+	</div>
+	<button type="submit" class="btn btn-primary w-25">
+		Задать вопрос
+	</button>
+</form>
+{% endblock %}
