@@ -20,10 +20,15 @@ def index_view(request):
             'title': 'title' + str(i),
             'id': i,
             'text': 'text' + str(i)
-            })
+        })
+    item = {
+        'tags': ['snakes', 'milk', "furry", "love", "milking", "scalie", "milk",
+                 "furry", "love", "milking", "scalie", "milk", "furry", "love", "milking", "scalie"]
+    }
     questions = paginate(questions_list, request)
     return render(request, 'index.html', {
-        'objects': questions
+        'objects': questions,
+        'item' : item
     })
 
 
@@ -62,7 +67,7 @@ def question_view(request, question_id):
     })
 
 
-def tag_view(request):
+def tag_view(request, tag_text):
     questions_list = []
     for i in range(1, 6):
         questions_list.append({
@@ -73,11 +78,11 @@ def tag_view(request):
     questions = paginate(questions_list, request)
     return render(request, 'tag.html', {
         'objects': questions,
-        'tag': "C++"
+        'tag' : tag_text
     })
 
 
-def login_view(request, next):
+def login_view(request):
     return render(request, 'login.html')
 
 
@@ -93,7 +98,7 @@ def ask_view(request):
     return render(request, 'ask.html')
 
 
-def logout(request, next):
+def logout(request):
     return render(request, 'login.html')
 
 

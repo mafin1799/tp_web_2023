@@ -40,7 +40,7 @@
                             </div>
                             <div class="row">
                                 <span>  <a href="{% url 'settings' %}">Настройки</a>
-                                        <a href="{% url 'logout' request.path %}">Выйти</a></span>
+                                        <a href="{% url 'logout' %}">Выйти</a></span>
                             </div>
                         </div>
                     </span>
@@ -50,7 +50,7 @@
 
 
                         <div style="position:inherit; left:12%">
-                            <a class="btn btn-link"  href="{% url 'login' request.path %}">Войти</a>
+                            <a class="btn btn-link"  href="{% url 'login'  %}">Войти</a>
                             <a class="btn btn-link"  href="{% url 'signup' %}">Регистрация</a>
                         </div>
 
@@ -62,7 +62,9 @@
         <div class="row" style="height:inherit">
             <div class="col-md-1"></div>
             <div class="col-md-7">
-                {% block content %}{% endblock content %}
+                {% block content %}
+
+                {% endblock content %}
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-3 mt-5">
@@ -70,16 +72,10 @@
                     <div>
                         <h1>Популярные теги</h1>
                         <div class="ms-3 w-75">
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
-                            <a href=" {% url 'tag' %} " class="row btn btn-outline-primary btn-sm me-3 mt-1">Default</a>
+                            {% for tag in item.tags %}
+                            <a  class="row btn btn-outline-primary btn-sm me-3 mt-1" href=" {% url 'tag' tag%}">{{tag}}</a>
+                            {% endfor %}
+
                         </div>
                     </div>
                 {% endblock tags %}
