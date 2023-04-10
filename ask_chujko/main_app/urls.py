@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index_view, name='index'),                                       #Главная
-    path('main/<int:question_id>', views.question_view, name='main'),               #Страница одного вопроса
+    path('main_app/<int:question_id>', views.question_view, name='main_app'),               #Страница одного вопроса
     path('ask', views.ask_view, name='ask'),                                        #Страница создания вопроса
     path('login', views.login_view, name='login'),                                  #Авторизация
     path('signup', views.signup_view, name='signup'),                               #Регистрация

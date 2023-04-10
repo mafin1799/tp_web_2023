@@ -3,9 +3,11 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from .managers import LikeDislikeManager, QuestionManager
+from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.ImageField(verbose_name='Avatar')
     nickname = models.CharField(max_length=100, verbose_name='Nickname')
 

@@ -7,40 +7,17 @@ from django.http import HttpResponse
 from . import models
 
 
-def base_view(request):
-    return render(request, 'base.html', {
-        'user': request.user,
-    })
-
-
 def index_view(request):
-    questions_list = []
-    for i in range(1, 30):
-        questions_list.append({
-            'title': 'title' + str(i),
-            'id': i,
-            'text': 'text' + str(i)
-        })
-    item = {
-        'tags': ['snakes', 'milk', "furry", "love", "milking", "scalie", "milk",
-                 "furry", "love", "milking", "scalie", "milk", "furry", "love", "milking", "scalie"]
-    }
-    questions = paginate(questions_list, request)
+    questions_list = models.Question.objects.new_questions()
+    questions = paginate(questions_list, 3)
     return render(request, 'index.html', {
-        'objects': questions,
-        'item' : item
+        'objects': questions
     })
 
 
 def hot_view(request):
-    questions_list = []
-    for i in range(1, 30):
-        questions_list.append({
-            'title': 'title' + str(i),
-            'id': i,
-            'text': 'text' + str(i)
-        })
-    questions = paginate(questions_list, request)
+    questions_list = models.Question.objects.hot_questions()
+    questions = paginate(questions_list, 3)
     return render(request, 'hot.html', {
         'objects': questions
     })
@@ -68,17 +45,11 @@ def question_view(request, question_id):
 
 
 def tag_view(request, tag_text):
-    questions_list = []
-    for i in range(1, 6):
-        questions_list.append({
-            'title': 'title' + str(i),
-            'id': i,
-            'text': 'text' + str(i)
-        })
-    questions = paginate(questions_list, request)
+    tag = get_object_or_404(models.Tag.objects, tag=tag_text)
+    questions = paginate(tag.questions(), request)
     return render(request, 'tag.html', {
         'objects': questions,
-        'tag' : tag_text
+        'tag': tag_text
     })
 
 
@@ -99,7 +70,8 @@ def ask_view(request):
 
 
 def logout(request):
-    return render(request, 'login.html')
+    auth.logout(request)
+    return redirect('login.html')
 
 
 def paginate(objects_list, request):
